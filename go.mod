@@ -23,9 +23,11 @@ replace (
 	k8s.io/legacy-cloud-providers => k8s.io/legacy-cloud-providers v0.18.2
 	k8s.io/metrics => k8s.io/metrics v0.18.2
 	k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.18.2
+
 )
 
 replace (
+	google.golang.org/grpc => google.golang.org/grpc v1.29.1
 	// github.com/coreos/prometheus-operator => github.com/coreos/prometheus-operator v0.32.0
 	// Pinned to v2.9.2 (kubernetes-1.13.1) so https://proxy.golang.org can
 	// resolve it correctly.
@@ -43,25 +45,23 @@ go 1.13
 
 require (
 	github.com/Azure/go-autorest v13.3.3+incompatible // indirect
-	github.com/Azure/go-autorest/autorest/adal v0.8.2 // indirect
 	github.com/cloudfoundry/go-socks5 v0.0.0-20180221174514-54f73bdb8a8e // indirect
 	github.com/cloudfoundry/socks5-proxy v0.2.0 // indirect
 	github.com/elliotchance/sshtunnel v1.1.1
 	github.com/go-logr/logr v0.1.0
 	github.com/go-openapi/spec v0.19.6
-	github.com/hashicorp/go-getter v1.4.1
+	github.com/hashicorp/go-getter v1.5.2
 	github.com/isaaguilar/socks5-proxy v0.3.0
-	github.com/operator-framework/operator-sdk v0.18.2
+	github.com/operator-framework/operator-sdk v0.19.4
 	github.com/spf13/pflag v1.0.5
 	github.com/whilp/git-urls v0.0.0-20191001220047-6db9661140c0
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
-	golang.org/x/net v0.0.0-20200301022130-244492dfa37a
+	golang.org/x/net v0.0.0-20200707034311-ab3426394381
 	gopkg.in/src-d/go-git.v4 v4.13.1
 	k8s.io/api v0.18.2
 	k8s.io/apimachinery v0.18.2
 	k8s.io/client-go v12.0.0+incompatible
-	k8s.io/kube-openapi v0.0.0-20200204173128-addea2498afe
+	k8s.io/kube-openapi v0.0.0-20200121204235-bf4fb3bd569c
 	sigs.k8s.io/controller-runtime v0.6.0
 	sigs.k8s.io/controller-tools v0.3.0
-	sigs.k8s.io/testing_frameworks v0.1.2 // indirect
 )

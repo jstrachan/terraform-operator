@@ -17,16 +17,16 @@ import (
 	"github.com/operator-framework/operator-sdk/pkg/k8sutil"
 	kubemetrics "github.com/operator-framework/operator-sdk/pkg/kube-metrics"
 	"github.com/operator-framework/operator-sdk/pkg/leader"
-	"github.com/operator-framework/operator-sdk/pkg/log/zap"
 	"github.com/operator-framework/operator-sdk/pkg/metrics"
 	sdkVersion "github.com/operator-framework/operator-sdk/version"
 	"github.com/spf13/pflag"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/util/intstr"
+	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client/apiutil"
 	"sigs.k8s.io/controller-runtime/pkg/client/config"
+	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 	"sigs.k8s.io/controller-runtime/pkg/manager"
-	logf "sigs.k8s.io/controller-runtime/pkg/runtime/log"
 	"sigs.k8s.io/controller-runtime/pkg/runtime/signals"
 )
 
@@ -36,7 +36,7 @@ var (
 	metricsPort         int32 = 8383
 	operatorMetricsPort int32 = 8686
 )
-var log = logf.Log.WithName("cmd")
+var log = ctrl.Log.WithName("setup")
 
 func printVersion() {
 	log.Info(fmt.Sprintf("Go Version: %s", runtime.Version()))
@@ -47,7 +47,9 @@ func printVersion() {
 func main() {
 	// Add the zap logger flag set to the CLI. The flag set must
 	// be added before calling pflag.Parse().
-	pflag.CommandLine.AddFlagSet(zap.FlagSet())
+	opts := zap.Options{}
+	opts.BindFlags(flag.CommandLine)
+	flag.Parse()
 
 	// Add flags registered by imported packages (e.g. glog and
 	// controller-runtime)
@@ -63,7 +65,7 @@ func main() {
 	// implementing the logr.Logger interface. This logger will
 	// be propagated through the whole operator, generating
 	// uniform and structured logs.
-	logf.SetLogger(zap.Logger())
+	ctrl.SetLogger(zap.New(zap.UseDevMode(true)))
 
 	printVersion()
 
