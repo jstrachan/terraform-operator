@@ -31,11 +31,9 @@ replace (
 	// resolve it correctly.
 	github.com/prometheus/prometheus => github.com/prometheus/prometheus v0.0.0-20190424153033-d3245f150225
 	k8s.io/kube-state-metrics => k8s.io/kube-state-metrics v1.6.0
-	sigs.k8s.io/controller-runtime => sigs.k8s.io/controller-runtime v0.4.0
+	// sigs.k8s.io/controller-runtime => sigs.k8s.io/controller-runtime v0.4.0
 	sigs.k8s.io/controller-tools => sigs.k8s.io/controller-tools v0.1.11-0.20190411181648-9d55346c2bde
 )
-
-replace github.com/operator-framework/operator-sdk => github.com/operator-framework/operator-sdk v0.15.1
 
 replace github.com/docker/docker => github.com/moby/moby v0.7.3-0.20190826074503-38ab9da00309 // Required by Helm
 
@@ -54,15 +52,16 @@ require (
 	github.com/hashicorp/go-getter v1.4.1
 	github.com/hashicorp/hcl v1.0.0
 	github.com/isaaguilar/socks5-proxy v0.3.0
-	github.com/operator-framework/operator-sdk v0.0.0-00010101000000-000000000000
+	github.com/operator-framework/operator-sdk v0.17.0
 	github.com/spf13/pflag v1.0.5
 	github.com/whilp/git-urls v0.0.0-20191001220047-6db9661140c0
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
-	golang.org/x/net v0.0.0-20200202094626-16171245cfb2
+	golang.org/x/net v0.0.0-20200226121028-0de0cce0169b
 	gopkg.in/src-d/go-git.v4 v4.13.1
-	k8s.io/api v0.0.0
-	k8s.io/apimachinery v0.0.0
+	k8s.io/api v0.17.4
+	k8s.io/apimachinery v0.17.4
 	k8s.io/client-go v12.0.0+incompatible
 	k8s.io/kube-openapi v0.0.0-20200204173128-addea2498afe
-	sigs.k8s.io/controller-runtime v0.4.0
+	sigs.k8s.io/controller-runtime v0.5.2
+	sigs.k8s.io/testing_frameworks v0.1.2 // indirect
 )
